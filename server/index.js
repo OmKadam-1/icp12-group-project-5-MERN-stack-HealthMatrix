@@ -1,8 +1,8 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import connectDB from "./db";
-import User from "./models/User";
+import connectDB from "./db.js";
+import User from "./models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -104,4 +104,5 @@ app.post("/api/auth/login", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
+  createAdmin();
 });
