@@ -49,6 +49,30 @@ app.get("/health", (req, res) => {
   res.json({ status: "OK" });
 });
 
+app.post("/api/auth/register", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser)
+      return res.status(400).json({ error: "User already exists" });
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    await User.create({
+      email,
+      password: hashedPassword,
+      role: "PATIENT"
+    });
+
+    res.status(201).json({ message: "Registration successful" });
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
