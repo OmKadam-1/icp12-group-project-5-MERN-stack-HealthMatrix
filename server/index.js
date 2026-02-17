@@ -15,28 +15,28 @@ app.use(cors());
 
 const PORT = process.env.PORT || 8080;
 
-const createAdmin = async () => {
+const createDoctor = async () => {
   try {
     const existingAdmin = await User.findOne({
-      email: process.env.ADMIN_EMAIL
+      email: process.env.DOCTOR_EMAIL
     });
 
     if (existingAdmin) return;
 
     const hashedPassword = await bcrypt.hash(
-      process.env.ADMIN_PASSWORD,
+      process.env.DOCTOR_PASSWORD,
       10
     );
 
     await User.create({
-      email: process.env.ADMIN_EMAIL,
+      email: process.env.DOCTOR_EMAIL,
       password: hashedPassword,
-      role: "ADMIN"
+      role: "DOCTOR"
     });
 
-    console.log("Admin created successfully");
+    console.log("Doctor created successfully");
   } catch (error) {
-    console.error("Admin creation error:", error.message);
+    console.error("Doctor creation error:", error.message);
   }
 };
 
@@ -119,5 +119,5 @@ app.put("/api/appointment/reject/:id", rejectAppointment);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
-  createAdmin();
+  createDoctor();
 });

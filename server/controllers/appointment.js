@@ -1,4 +1,4 @@
-import Appointment from "../models/Appointment.js";
+import Appointment from "../models/Appointments.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -32,7 +32,7 @@ const postAppointment = async (req, res) => {
 };
 
 // Controller to fetch appointments for a specific patient
-export const getPatientAppointments = async (req, res) => {
+const getPatientAppointments = async (req, res) => {
   try {
     const appointments = await Appointment.find({
       patientId: req.params.patientId,
