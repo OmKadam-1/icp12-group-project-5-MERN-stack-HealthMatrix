@@ -3,11 +3,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { setPageTitle, isUserLoggedIn } from "../utils";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 
 function Login() {
   const [form, setForm] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const navigate = useNavigate();
@@ -35,7 +37,7 @@ function Login() {
     try {
       const res = await axios.post(
         "http://localhost:8080/api/auth/login",
-        form
+        form,
       );
 
       // Save authentication data
@@ -51,7 +53,6 @@ function Login() {
       } else if (res.data.role === "PATIENT") {
         navigate("/");
       }
-
     } catch (error) {
       toast.error(error.response?.data?.error || "Login Failed ❌");
     }
@@ -62,34 +63,30 @@ function Login() {
       <Toaster position="top-right" />
 
       <div className="bg-white p-6 rounded shadow-md w-80">
-        <h2 className="text-xl font-bold mb-4 text-center">
-          🔐 Login
-        </h2>
+        <h2 className="text-xl font-bold mb-4 text-center">🔐 Login</h2>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter Email"
-          className="w-full border p-2 mb-3"
+        <Input
+          type={"email"}
+          placeholder={"Enter Your Email"}
+          name={"email"}
           value={form.email}
           onChange={handleChange}
         />
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter Password"
-          className="w-full border p-2 mb-3"
+        <Input
+          type={"password"}
+          placeholder={"Enter Your Password"}
+          name={"password"}
           value={form.password}
           onChange={handleChange}
         />
 
-        <button
+        <Button
+          title=" Login"
+          size="medium"
+          variant="primary"
           onClick={handleSubmit}
-          className="w-full bg-blue-600 text-white p-2 rounded"
-        >
-          Login
-        </button>
+        />
       </div>
     </div>
   );

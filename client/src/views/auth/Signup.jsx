@@ -3,11 +3,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { setPageTitle } from "../utils";
+import Input from "../../components/Input";
+import Button from "../../components/Button";
 
 function Signup() {
   const [form, setForm] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const navigate = useNavigate();
@@ -22,10 +24,7 @@ function Signup() {
 
   const handleSubmit = async () => {
     try {
-      await axios.post(
-        "http://localhost:8080/api/auth/register",
-        form
-      );
+      await axios.post("http://localhost:8080/api/auth/register", form);
 
       toast.success("Registration Successful ✅");
 
@@ -33,11 +32,8 @@ function Signup() {
       setTimeout(() => {
         navigate("/login");
       }, 1500);
-
     } catch (error) {
-      toast.error(
-        error.response?.data?.error || "Registration Failed ❌"
-      );
+      toast.error(error.response?.data?.error || "Registration Failed ❌");
     }
   };
 
@@ -46,34 +42,30 @@ function Signup() {
       <Toaster position="top-right" />
 
       <div className="bg-white p-6 rounded shadow-md w-80">
-        <h2 className="text-xl font-bold mb-4 text-center">
-          📝 Sign Up
-        </h2>
+        <h2 className="text-xl font-bold mb-4 text-center">📝 Sign Up</h2>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter Email"
-          className="w-full border p-2 mb-3"
+        <Input
+          type={"email"}
+          placeholder={"Enter Your Email"}
+          name={"email"}
           value={form.email}
           onChange={handleChange}
         />
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter Password"
-          className="w-full border p-2 mb-3"
+        <Input
+          type={"password"}
+          placeholder={"Enter Your Password"}
+          name={"password"}
           value={form.password}
           onChange={handleChange}
         />
 
-        <button
+        <Button
+          title="   Sign Up"
+          size="medium"
+          variant="primary"
           onClick={handleSubmit}
-          className="w-full bg-green-600 text-white p-2 rounded"
-        >
-          Sign Up
-        </button>
+        />
 
         <p className="text-sm text-center mt-3">
           Already have an account?{" "}
