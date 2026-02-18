@@ -43,18 +43,18 @@ const NavbarPatient = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`font-medium transition ${
-                  isActive
-                    ? "text-green-600"
-                    : "text-gray-700 hover:text-green-600"
-                }`}
+                className={`font-medium transition-all duration-300 px-5 py-2 rounded-full
+                 ${isActive
+                    ? "bg-green-500 text-white shadow-md"
+                    : "text-gray-700 hover:bg-green-100 hover:text-green-600"
+                  }`}
               >
                 {item.name}
               </Link>
             );
           })}
         </div>
-  
+
         <div className="hidden lg:flex items-center gap-4">
           <Link
             to="/doctor/login"
