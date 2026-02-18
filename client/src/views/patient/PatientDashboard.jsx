@@ -3,6 +3,7 @@ import { Star } from "lucide-react";
 import {Calendar, Phone, ShieldCheck, Clock, Stethoscope, Users,} from "lucide-react";
 import Image from "../../assets/doctorteam.png"; 
 import NavbarPatient from "../../components/NavbarPatient.jsx"
+import Certificate from "../../components/Certificate.jsx";
 
 const PatientDashboard = () => {
     return (
@@ -74,5 +75,7 @@ const Feature = ({ icon, text }) => {
         </div>
     );
 };
-
+<div>
+  <Certificate />
+</div>
 export default PatientDashboard;
