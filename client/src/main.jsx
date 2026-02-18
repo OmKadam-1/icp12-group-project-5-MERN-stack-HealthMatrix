@@ -15,7 +15,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/signup" element={<Signup />} />
-       <Route path="/login" element={<Signup />} />
+       <Route path="/login" element={<Login />} />
       <Route path="/patient/book" element={<BookAppointment />} />
        <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
         <Route path="/" element={<PatientDashboard />} />
