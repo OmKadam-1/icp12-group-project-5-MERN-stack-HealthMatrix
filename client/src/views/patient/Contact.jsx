@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import axios from "axios"
 import Input from "./Input"
+import NavbarPatient from "../../components/NavbarPatient"
+import Footer from "../../components/Footer"
 
 function Contact() {
 
@@ -22,7 +24,10 @@ function Contact() {
         alert("Message Sent Successfully")
     }
     return (
+        <>
+        <NavbarPatient />
         <div className="min-h-screen flex flex-col items-center p-10">
+       
             <h1 className="text-4xl font-bold text-green-700 mb-10">
                 Contact To Our Clinic
             </h1>
@@ -115,6 +120,8 @@ function Contact() {
                 </div>
             </div>
         </div>
+        <Footer/>
+</>
     )
 }
 export default Contact

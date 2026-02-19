@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
+import NavbarAdmin from "../../components/NavbarAdmin"
+import Footer from "../../components/Footer"
+
 function DoctorInbox() {
   const [messages, setMessages] = useState([])
 
@@ -8,6 +11,8 @@ function DoctorInbox() {
       .then(res => setMessages(res.data))
   }, [])
   return (
+    <>
+    <NavbarAdmin/>
     <div className="min-h-screen bg-green-100 p-10">
 
       <h1 className="text-3xl font-bold text-center mb-8">
@@ -37,6 +42,8 @@ function DoctorInbox() {
 
       </div>
     </div>
+    <Footer/>
+  </>
   )
 }
 export default DoctorInbox
