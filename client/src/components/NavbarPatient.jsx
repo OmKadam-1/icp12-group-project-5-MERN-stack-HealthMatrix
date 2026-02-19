@@ -17,11 +17,11 @@ const NavbarPatient = () => {
 
   return (
     <>
-      <div className="h-1 bg-green-500 w-full"></div>
-      <nav className="w-full bg-gray-100 px-6 md:px-12 py-4 flex items-center justify-between shadow-sm">
-        <Link
-          to="/"
-          className="flex items-center gap-3 cursor-pointer">
+      <div className="fixed top-0 left-0 z-50 h-1 bg-green-500 w-full"></div> 
+
+      <nav className="fixed top-1 left-0 w-full z-40 bg-gray-100 px-6 md:px-12 py-4 flex items-center justify-between shadow-sm">
+
+        <Link to="/" className="flex items-center gap-3 cursor-pointer">
           <img src={Logo} alt="logo" className="w-14" />
 
           <div>
@@ -44,10 +44,11 @@ const NavbarPatient = () => {
                 key={item.path}
                 to={item.path}
                 className={`font-medium transition-all duration-300 px-5 py-2 rounded-full
-                 ${isActive
-                    ? "bg-green-500 text-white shadow-md"
-                    : "text-gray-700 hover:bg-green-100 hover:text-green-600"
-                  }`}
+                 ${
+                   isActive
+                     ? "bg-green-500 text-white shadow-md"
+                     : "text-gray-700 hover:bg-green-100 hover:text-green-600"
+                 }`}
               >
                 {item.name}
               </Link>
@@ -69,8 +70,8 @@ const NavbarPatient = () => {
           >
             Registration
           </Link>
-
         </div>
+
         <div className="lg:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -78,8 +79,9 @@ const NavbarPatient = () => {
         </div>
 
       </nav>
+
       {menuOpen && (
-        <div className="lg:hidden bg-white shadow-md px-6 py-6 space-y-5">
+        <div className="fixed top-[85px] left-0 w-full z-30 lg:hidden bg-white shadow-md px-6 py-6 space-y-5">
 
           {navItems.map((item) => (
             <Link
@@ -112,6 +114,9 @@ const NavbarPatient = () => {
 
         </div>
       )}
+
+      <div className="h-[90px]"></div>
+
     </>
   );
 };
