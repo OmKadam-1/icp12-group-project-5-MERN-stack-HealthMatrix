@@ -91,6 +91,16 @@ function Contact() {
 
                     </form>
 
+                    <div className="w-full">
+                        <div className="w-170 rounded-2xl shadow-xl bg-green-100 border-2 border-solid border-green-500 my-3
+          hover:shadoow-xl/30 hover:shadow-green-600 duration-400">
+                            <h1 className="text-3xl font-bold px-3 py-1 ">Visit Our Clinic</h1>
+                            <h1 className="px-6 font-bold md:font-semibold text-lg">Hadapsar, Pune, Maharashtra</h1>
+                            <h1 className="px-6 italic my-2 text-m">Contact :- 9172896214</h1>
+                            <h1 className="px-6  italic py-2 text-m">Mail :- ashishsmathpati@gmail.com</h1>
+
+                        </div>
+                    </div>
 
                 </div>
             </div>
