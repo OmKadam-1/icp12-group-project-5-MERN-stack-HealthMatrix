@@ -30,6 +30,68 @@ function Contact() {
             <div className="flex flex-col md:flex-row gap-10 w-full max-w-6xl">
 
                 <div className="bg-white shadow-lg rounded-2xl p-6 w-full border-2 border-solid border-green-500 hover:shadoow-xl/30 hover:shadow-green-600 duration-400">
+                    <form onSubmit={handleSubmit} className="space-y-4">
+
+                        <Input
+                            name="name"
+                            placeholder="Enter Name"
+                            onChange={handleChange}
+                        />
+
+                        <Input
+                            name="email"
+                            placeholder="Enter Email"
+                            onChange={handleChange}
+                            type="email"
+                        />
+
+                        <Input
+                            name="phone"
+                            placeholder="Enter Phone"
+                            onChange={handleChange}
+                            type="tel"
+                        />
+
+                        <select
+                            name="department"
+                            onChange={handleChange}
+                            className="w-full border p-2 rounded"
+                        >
+                            <option>Select Department</option>
+                            <option>Cardiology</option>
+                            <option>Neurology</option>
+                            <option>Orthopedic</option>
+                        </select>
+
+                        <select
+                            name="service"
+                            onChange={handleChange}
+                            className="w-full border p-2 rounded"
+                        >
+                            <option>Select Service</option>
+                            <option>Appointment</option>
+                            <option>Emergency</option>
+                            <option>Consultation</option>
+                        </select>
+
+                        <textarea
+                            name="message"
+                            placeholder="Enter Message"
+                            onChange={handleChange}
+                            className="w-full border p-2 rounded"
+                            required
+                        />
+
+                        <button
+                            type="submit"
+                            className="bg-green-600 text-white w-full py-2 rounded-xl hover:bg-green-700"
+                        >
+                            Send Message
+                        </button>
+
+                    </form>
+
+
                 </div>
             </div>
         </div>
