@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-function Admin() {
+function DoctorInbox() {
   const [messages, setMessages] = useState([])
 
   useEffect(() => {
@@ -39,4 +39,4 @@ function Admin() {
     </div>
   )
 }
-export default Admin
+export default DoctorInbox
