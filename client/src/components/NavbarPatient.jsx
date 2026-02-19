@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "../assets/logo.png";
-import Avatar from "./Avatar";
 import Button from "./Button";
 import { isUserLoggedIn, logoutUser } from "../utils";
 
@@ -10,10 +9,8 @@ const NavbarPatient = () => {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Check login status
   const loggedIn = isUserLoggedIn();
 
-  // Get role for avatar display
   const role = localStorage.getItem("role") || "User";
 
   const navItems = [
@@ -27,7 +24,6 @@ const NavbarPatient = () => {
   return (
     <>
       <div className="fixed top-0 left-0 z-50 h-1 bg-green-500 w-full"></div> 
-
       <nav className="fixed top-1 left-0 w-full z-40 bg-gray-100 px-6 md:px-12 py-4 flex items-center justify-between shadow-sm">
 
         <Link to="/" className="flex items-center gap-3 cursor-pointer">
@@ -42,7 +38,6 @@ const NavbarPatient = () => {
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center bg-white border border-green-400 rounded-full px-8 py-3 shadow-md space-x-10">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -64,7 +59,6 @@ const NavbarPatient = () => {
           })}
         </div>
 
-        {/* Right Side (Desktop) */}
         <div className="hidden lg:flex items-center gap-4">
           <Link
             to="/login"
