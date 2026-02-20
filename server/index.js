@@ -58,6 +58,10 @@ app.post("/api/auth/register", registerPatient);
 app.post("/api/auth/login", loginUser);
 
 
+app.get('/auth', function (req, res) {
+    const { token, expire, signature } = client.helper.getAuthenticationParameters();
+    res.send({ token, expire, signature, publicKey: process.env.IMAGEKIT_PUBLIC_KEY });
+});
 
 // api for booking appointment
 app.post("/api/appointment/book", authenticateJWT,

@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import { setPageTitle, getUserJwtToken } from  "../../utils";
-import NavbarAdmin from '../../components/NavbarAdmin'
+import { setPageTitle, getUserJwtToken } from "../../utils";
+import NavbarAdmin from "../../components/NavbarAdmin";
 import Button from "../../components/Button.jsx";
 import Input from "../../components/Input";
 import axios from "axios";
@@ -80,9 +80,9 @@ function AddServices() {
         },
       });
 
-      setNewTour({
-        ...newTour,
-        photos: [...newTour.photos, uploadResponse.url],
+      setNewService({
+        ...newService,
+        serviceImg: [...newService.serviceImg, uploadResponse.url],
       });
       setProgress(0);
       fileInput.value = "";
@@ -151,42 +151,42 @@ function AddServices() {
           ))}
         </div>
         <Input
-          type={"text"}
-          placeholder={"Enter Service Name"}
+          type="text"
+          placeholder="Enter Service Name"
           value={newService.serviceName}
           onChange={(e) => {
             setNewService({
               ...newService,
-              newService: e.target.value,
+              serviceName: e.target.value,
             });
           }}
         />
 
         <Input
-          type={"text"}
-          placeholder={"Enter Department"}
+          type="text"
+          placeholder="Enter Department"
           value={newService.department}
           onChange={(e) => {
             setNewService({
               ...newService,
-              newService: e.target.value,
+              department: e.target.value,
             });
           }}
         />
         <Input
-          type={"text"}
-          placeholder={"Enter Description"}
+          type="text"
+          placeholder="Enter Description"
           value={newService.description}
           onChange={(e) => {
             setNewService({
               ...newService,
-              newService: e.target.value,
+              description: e.target.value,
             });
           }}
         />
 
         <Input
-          type={"file"}
+          type="file"
           ref={fileInputRef}
           onChange={(e) => {
             if (e.target.files.length > 0) {
