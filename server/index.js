@@ -109,6 +109,25 @@ app.post("/api/services", authenticateJWT, authorizeRole("DOCTOR"), async (req, 
   }
 });
 
+// api for fetching all services
+app.get("/api/services", async (req, res) => {
+  try {
+    const services = await Service.find().populate("createdBy", "email");
+
+    return res.json({
+      success: true,
+      message: "Services fetched successfully",
+      data: services,
+    });
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch services",
+      error: error.message,
+    });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
