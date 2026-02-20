@@ -151,8 +151,8 @@ function AddServices() {
           ))}
         </div>
         <Input
-          type={"text"}
-          placeholder={"Enter Service Name"}
+          type="text"
+          placeholder="Enter Service Name"
           value={newService.serviceName}
           onChange={(e) => {
             setNewService({
@@ -163,8 +163,8 @@ function AddServices() {
         />
 
         <Input
-          type={"text"}
-          placeholder={"Enter Department"}
+          type="text"
+          placeholder="Enter Department"
           value={newService.department}
           onChange={(e) => {
             setNewService({
@@ -174,8 +174,8 @@ function AddServices() {
           }}
         />
         <Input
-          type={"text"}
-          placeholder={"Enter Description"}
+          type="text"
+          placeholder="Enter Description"
           value={newService.description}
           onChange={(e) => {
             setNewService({
@@ -186,7 +186,7 @@ function AddServices() {
         />
 
         <Input
-          type={"file"}
+          type="file"
           ref={fileInputRef}
           onChange={(e) => {
             if (e.target.files.length > 0) {
