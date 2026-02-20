@@ -11,6 +11,8 @@ import MyAppointment from "./views/patient/MyAppointment";
 import Contact from "./views/patient/Contact";
 import DoctorInbox from "./views/doctor/DoctorInbox";
 import AddServices from "./views/doctor/AddServices";
+import AllServices from "./views/doctor/AllServices";
+import Services from "./views/patient/Services";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -24,6 +26,11 @@ root.render(
       <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
 
       <Route path="/service/new" element={<AddServices />} />
+
+      <Route path="/service/allservice" element={<AllServices />} />
+            <Route path="/service/viewservices" element={<Services />} />
+
+
 
       <Route path="/doctor/doctor-inbox" element={<DoctorInbox />} />
       <Route path="/" element={<PatientDashboard />} />

@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
-import { setPageTitle, getUserJwtToken } from "../utils.jsx";
-import NavbarAdmin from "../components/NavbarAdmin.jsx";
-import Button from "../components/Button.jsx";
-import Input from "../components/Input";
+import { setPageTitle, getUserJwtToken } from  "../../utils";
+import NavbarAdmin from '../../components/NavbarAdmin'
+import Button from "../../components/Button.jsx";
+import Input from "../../components/Input";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import {
@@ -12,7 +12,7 @@ import {
   ImageKitUploadNetworkError,
   upload,
 } from "@imagekit/react";
-import PhotoViewer from "../components/PhotoViewer.jsx";
+import PhotoViewer from "../../components/PhotoViewer.jsx";
 
 function AddServices() {
   const [newService, setNewService] = useState({
