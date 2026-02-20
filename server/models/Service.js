@@ -10,11 +10,11 @@ const serviceSchema = new mongoose.Schema({
 
     description: { type: String, required: true },
 
-    serviceImg: { type: String, required: true },
+    serviceImg: { type: [String], default: [] , required: true },
     // image URL
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 }, { timestamps: true });
 
-const Service = model("Service", serviceSchema);
+const Service = mongoose.model("Service", serviceSchema);
 
 export default Service;
