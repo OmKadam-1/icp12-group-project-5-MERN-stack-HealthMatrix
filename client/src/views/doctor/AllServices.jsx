@@ -10,7 +10,6 @@ function AllServices() {
   const [services, setServices] = useState([]);
 
   const fetchServices = async () => {
-    const userJWT = getUserJwtToken();
     try {
       const response = await axios.get("http://localhost:8080/api/services", 
       );
