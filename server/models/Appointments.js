@@ -12,7 +12,7 @@ const appointmentSchema = new mongoose.Schema({
     problem: String,
     address: String,
 
-    dateRequested: { type: Date, default: Date.now },
+    dateRequested: { type: Date, default: Date.now }, 
 
     status: {
         type: String,
@@ -22,7 +22,7 @@ const appointmentSchema = new mongoose.Schema({
 
     appointmentDate: Date,
     appointmentTime: String,
-});
+} ,  { timestamps: true });
 
 const Appointment = mongoose.model("Appointment", appointmentSchema);
 export default Appointment;
