@@ -54,7 +54,7 @@ function BookAppointment() {
 
     } catch (error) {
       console.error(error);
-      toast.error("Server Error ❌");
+      toast.error("You have to login first");
     }
   };
 
@@ -74,7 +74,7 @@ function BookAppointment() {
           value={form.patientName}
           onChange={handleChange}
         />
-
+ 
         <Input
           type="email"
           placeholder="Enter Your Email"
@@ -84,7 +84,7 @@ function BookAppointment() {
         />
 
         <Input
-          type="text"
+          type="tel"
           placeholder="Enter Your Phone Number"
           name="phone"
           value={form.phone}

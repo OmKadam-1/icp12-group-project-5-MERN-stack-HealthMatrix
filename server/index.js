@@ -138,6 +138,7 @@ app.get("/api/services", async (req, res) => {
   }
 });
 
+
 app.post("/api/contact", authenticateJWT,
   authorizeRole("PATIENT"), async (req, res) => {
     const { name, email, phone, address, message } = req.body;
@@ -166,6 +167,8 @@ app.post("/api/contact", authenticateJWT,
       });
     }
   });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
