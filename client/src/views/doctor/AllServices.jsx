@@ -28,7 +28,7 @@ function AllServices() {
 
   useEffect(() => {
     fetchServices();
-  }, []);
+  }, []); 
 
   return (
     <div>

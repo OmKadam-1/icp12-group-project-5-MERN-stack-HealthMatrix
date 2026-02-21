@@ -7,10 +7,12 @@ const contactSchema = new mongoose.Schema({
     address: String,
     message: { type: String, required: true },
 
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+
     dateRequested: { type: Date, default: Date.now },
 
 }, { timestamps: true });
-
+ 
  
 const Contact = mongoose.model("Contact", contactSchema);
 export default Contact;
