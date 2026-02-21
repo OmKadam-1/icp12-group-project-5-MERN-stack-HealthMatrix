@@ -4,15 +4,12 @@ import express from "express";
 import connectDB from "./db.js";
 import User from "./models/User.js";
 import ImageKit from "@imagekit/nodejs";
-
-
 import bcrypt from "bcryptjs";
-
 import { registerPatient, loginUser } from "./controllers/authController.js";
 import { postAppointment, getPatientAppointments, getDoctorAppointments, approveAppointment, rejectAppointment } from "./controllers/appointment.js";
 import { authenticateJWT, authorizeRole } from "./middlewares/authMiddleware.js";
 import Service from "./models/Service.js";
-
+import Contact from "./models/Contact.js";
 
 dotenv.config();
 
@@ -21,8 +18,6 @@ app.use(express.json());
 app.use(cors());
 
 const PORT = process.env.PORT || 8080;
-
-
 
 const client = new ImageKit({
   publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
@@ -70,8 +65,8 @@ app.post("/api/auth/login", loginUser);
 
 
 app.get('/auth', function (req, res) {
-    const { token, expire, signature } = client.helper.getAuthenticationParameters();
-    res.send({ token, expire, signature, publicKey: process.env.IMAGEKIT_PUBLIC_KEY });
+  const { token, expire, signature } = client.helper.getAuthenticationParameters();
+  res.send({ token, expire, signature, publicKey: process.env.IMAGEKIT_PUBLIC_KEY });
 });
 
 // api for booking appointment
@@ -143,6 +138,61 @@ app.get("/api/services", async (req, res) => {
     });
   }
 });
+
+
+app.post("/api/contact", authenticateJWT, authorizeRole("PATIENT"), async (req, res) => {
+    const { name, email, phone, address, message } = req.body;
+
+    const newContact = new Contact({
+      name,
+      email,
+      phone,
+      address,
+      message,
+      createdBy: req.body.id,
+    });
+
+    try {
+      const saveContact = await newContact.save();
+      return res.json({
+        success: true,
+        message: " Your response send  successfully",
+        data: saveContact,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: "Failed to send your response",
+        error: error.message,
+      });
+    }
+  });
+
+app.get("/api/contact" , async (req, res) => {
+   try {
+    const contct = await Contact.find().populate("createdBy", "email");
+
+    return res.json({
+      success: true,
+      message: "Contact fetched successfully",
+      data: contct,
+    });
+  } catch (error) {
+    console.error("Error fetching contct:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch contct",
+      error: error.message,
+    });
+  }
+})
+
+
+
+
+  
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

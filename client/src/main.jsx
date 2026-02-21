@@ -13,6 +13,7 @@ import DoctorInbox from "./views/doctor/DoctorInbox";
 import AddServices from "./views/doctor/AddServices";
 import AllServices from "./views/doctor/AllServices";
 import Services from "./views/patient/Services";
+import RecievdContact from "./views/doctor/RecievedContact";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -23,15 +24,11 @@ root.render(
       <Route path="/login" element={<Login />} />
       <Route path="/patient/book" element={<BookAppointment />} />
       <Route path="/patient/contact" element={<Contact />} />
+      <Route path="/doctor/contact" element={<RecievdContact />} />
       <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
-
       <Route path="/service/new" element={<AddServices />} />
-
       <Route path="/service/allservice" element={<AllServices />} />
-            <Route path="/service/viewservices" element={<Services />} />
-
-
-
+      <Route path="/service/viewservices" element={<Services />} />
       <Route path="/doctor/doctor-inbox" element={<DoctorInbox />} />
       <Route path="/" element={<PatientDashboard />} />
       <Route

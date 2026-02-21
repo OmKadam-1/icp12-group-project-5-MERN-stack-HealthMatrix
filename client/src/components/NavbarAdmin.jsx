@@ -18,10 +18,15 @@ const NavbarAdmin = () => {
 
   const navItems = [
     { name: "Dashboard", path: "/doctor/dashboard", icon: LayoutDashboard },
-    { name: "Appointments", path: "/doctor/manage-appointments", icon: Calendar },
-    { name: "Service Dashboard", path: "/admin/service-dashboard", icon: Briefcase },
+    {
+      name: "Appointments",
+      path: "/doctor/manage-appointments",
+      icon: Calendar,
+    },
+    // { name: "Service Dashboard", path: "/admin/service-dashboard", icon: Briefcase },
     { name: "All Service", path: "/service/allservice", icon: PlusSquare },
-    { name: "Service Appointments", path: "/admin/service-appointments", icon: CalendarCheck },
+    { name: "Inbox", path: "/doctor/contact", icon: CalendarCheck },
+    // { name: "Service Appointments", path: "/admin/service-appointments", icon: CalendarCheck },
   ];
 
   return (
@@ -46,9 +51,11 @@ const NavbarAdmin = () => {
                 key={index}
                 to={item.path}
                 className={`flex flex-col items-center text-xs font-medium transition
-                  ${isActive
-                    ? "text-green-600"
-                    : "text-gray-600 hover:text-green-600"}
+                  ${
+                    isActive
+                      ? "text-green-600"
+                      : "text-gray-600 hover:text-green-600"
+                  }
                 `}
               >
                 <Icon size={18} />
@@ -63,12 +70,10 @@ const NavbarAdmin = () => {
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
-
       </div>
 
       {isOpen && (
         <div className="lg:hidden mt-4 bg-white border border-green-200 rounded-xl shadow-md p-4 space-y-4">
-
           {navItems.map((item, index) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
@@ -79,9 +84,11 @@ const NavbarAdmin = () => {
                 to={item.path}
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center gap-3 font-medium transition
-                  ${isActive
-                    ? "text-green-600"
-                    : "text-gray-700 hover:text-green-600"}
+                  ${
+                    isActive
+                      ? "text-green-600"
+                      : "text-gray-700 hover:text-green-600"
+                  }
                 `}
               >
                 <Icon size={20} />
@@ -89,10 +96,8 @@ const NavbarAdmin = () => {
               </Link>
             );
           })}
-
         </div>
       )}
-
     </div>
   );
 };
