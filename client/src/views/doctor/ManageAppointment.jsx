@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import AdminNavbar from "../../components/NavbarAdmin";
+import NavbarAdmin from "../../components/NavbarAdmin";
 
 function ManageAppointment() {
   const [appointments, setAppointments] = useState([]);
   const [timeData, setTimeData] = useState({});
-
+  
   const doctorId = localStorage.getItem("userId");
 
   // 🔹 Fetch doctor appointments
@@ -89,7 +89,7 @@ function ManageAppointment() {
 
   return (
     <div>
-      <AdminNavbar />
+      <NavbarAdmin />
 
       <div className="p-6">
         <h2 className="text-xl font-bold mb-4">📋 Manage Appointments</h2>

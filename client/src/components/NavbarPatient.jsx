@@ -16,11 +16,11 @@ const NavbarPatient = () => {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Doctors", path: "/doctors" },
-    { name: "Services", path: "/services" },
+    { name: "Services", path: "/service/viewservices" },
     { name: "Appointments", path: "/patient/book" },
-    { name: "Contact", path: "/contact" },
+    { name: "Contact", path: "/patient/contact" },
   ];
-
+ 
   return (
     <>
       <div className="fixed top-0 left-0 z-50 h-1 bg-green-500 w-full"></div> 

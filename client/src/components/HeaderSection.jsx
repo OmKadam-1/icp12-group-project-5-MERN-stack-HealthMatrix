@@ -60,7 +60,7 @@ const HeroSection = () => {
 
                     <div className="flex justify-center">
                         <img
-                            src={Image} 
+                            src={Image}  
                             alt="Doctors"
                         />
                     </div>
