@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import {
   LayoutDashboard,
   Calendar,
-  Briefcase,
   PlusSquare,
   CalendarCheck,
   Menu,
@@ -11,27 +10,27 @@ import {
 } from "lucide-react";
 
 import Logo from "../assets/logo.png";
+import Avatar from "./Avatar";
+import Button from "./Button";
+import { logoutUser } from "../utils";
 
 const NavbarAdmin = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
+  const role = localStorage.getItem("role") || "Doctor";
+
   const navItems = [
     { name: "Dashboard", path: "/doctor/dashboard", icon: LayoutDashboard },
-    {
-      name: "Appointments",
-      path: "/doctor/manage-appointments",
-      icon: Calendar,
-    },
-    // { name: "Service Dashboard", path: "/admin/service-dashboard", icon: Briefcase },
+    { name: "Appointments", path: "/doctor/manage-appointments", icon: Calendar },
     { name: "All Service", path: "/service/allservice", icon: PlusSquare },
     { name: "Inbox", path: "/doctor/contact", icon: CalendarCheck },
-    // { name: "Service Appointments", path: "/admin/service-appointments", icon: CalendarCheck },
   ];
 
   return (
     <div className="relative w-full bg-[#e6f4ef] px-6 py-4">
       <div className="flex items-center justify-between">
+
         <div className="flex items-center gap-3">
           <img src={Logo} alt="logo" className="w-12 h-12" />
           <div>
@@ -41,6 +40,7 @@ const NavbarAdmin = () => {
             <p className="text-xs text-gray-500">Healthcare Solutions</p>
           </div>
         </div>
+
         <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center bg-white border border-green-200 rounded-full px-6 py-3 shadow-md gap-8">
           {navItems.map((item, index) => {
             const Icon = item.icon;
@@ -64,6 +64,19 @@ const NavbarAdmin = () => {
             );
           })}
         </div>
+
+      
+        <div className="hidden lg:flex items-center gap-3">
+          <Avatar name={role} size="medium" />
+          <Button
+            title="Logout"
+            size="medium"
+            variant="secondary"
+            onClick={logoutUser}
+          />
+        </div>
+
+    
         <button
           className="lg:hidden text-green-700"
           onClick={() => setIsOpen(!isOpen)}
@@ -72,6 +85,7 @@ const NavbarAdmin = () => {
         </button>
       </div>
 
+    
       {isOpen && (
         <div className="lg:hidden mt-4 bg-white border border-green-200 rounded-xl shadow-md p-4 space-y-4">
           {navItems.map((item, index) => {
@@ -96,6 +110,20 @@ const NavbarAdmin = () => {
               </Link>
             );
           })}
+
+      
+          <div className="flex items-center justify-between pt-3 border-t">
+            <Avatar name={role} size="small" />
+            <Button
+              title="Logout"
+              size="small"
+              variant="secondary"
+              onClick={() => {
+                logoutUser();
+                setIsOpen(false);
+              }}
+            />
+          </div>
         </div>
       )}
     </div>
