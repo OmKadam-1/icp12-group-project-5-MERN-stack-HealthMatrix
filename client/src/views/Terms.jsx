@@ -80,8 +80,8 @@ const Terms = () => {
 
           <section>
             <h2 className="font-semibold text-lg mb-2">9. Contact Information</h2>
-            <p>Email: support@yourhospital.com</p>
-            <p>Phone: +91-XXXXXXXXXX</p>
+            <p>Email: healthmatrixservices@gmail.com</p>
+            <p>Phone: +91-9876543219</p>
             <p>Address: Maharashtra, India</p>
           </section>
 
