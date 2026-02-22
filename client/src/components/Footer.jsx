@@ -73,7 +73,7 @@ const Footer = () => {
               <div className="bg-green-200 p-3 rounded-full">
                 <Mail size={18} />
               </div>
-              <span>HealthMatrixservices@gmail.com</span>
+              <span>healthmatrixservices@gmail.com</span>
             </div>
 
             <div className="flex items-center gap-3">
@@ -113,7 +113,7 @@ const Footer = () => {
               "Blood Sugar Test",
               "Full Blood Count",
               "X-Ray Scan",
-              "Blood Sugar Test",
+              "ECG Test",
             ].map((service, index) => (
               <li key={index} className="flex items-center gap-3">
                 <span className="w-3 h-3 bg-green-500 rounded-full"></span>
